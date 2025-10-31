@@ -1,6 +1,10 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"api/controllers"
+
+	"github.com/gin-gonic/gin"
+)
 
 type RouteResponse struct {
 	Message string `json:"message"`
@@ -9,6 +13,7 @@ type RouteResponse struct {
 
 func RegisterHandler(r *gin.Engine) {
 	r.GET("/route", func(ctx *gin.Context) {
-		ctx.JSON(200, RouteResponse{Message: "From route handler", Path: ctx.Request.Host})
+		response := controllers.HandleReq()
+		ctx.JSON(200, RouteResponse{Message: response, Path: ctx.Request.Host})
 	})
 }
