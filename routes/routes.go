@@ -14,6 +14,6 @@ type RouteResponse struct {
 func RegisterHandler(r *gin.Engine) {
 	r.GET("/route", func(ctx *gin.Context) {
 		response := controllers.HandleReq()
-		ctx.JSON(200, RouteResponse{Message: response, Path: ctx.Request.Host})
+		ctx.JSON(200, RouteResponse{Message: response.Message, Path: ctx.Request.Host})
 	})
 }

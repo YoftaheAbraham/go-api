@@ -1,5 +1,9 @@
 package controllers
 
-func HandleReq() string {
-	return "From controller"
+type ControllerResponse struct {
+	Message string
+}
+
+func HandleReq() ControllerResponse {
+	return ControllerResponse{Message: "Success"}
 }
